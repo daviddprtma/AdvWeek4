@@ -1,6 +1,6 @@
 # AdvWeek4
 
-<img src="https://cms-assets.tutsplus.com/uploads/users/1499/posts/29820/preview_image/kotlin.jpg" alt="">
+<img src="https://cms-assets.tutsplus.com/uploads/users/1499/posts/29820/preview_image/kotlin.jpg" alt="" style="display: block; margin=: auto;">
 
 [![official project](https://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![TeamCity (simple build status)](https://img.shields.io/teamcity/http/teamcity.jetbrains.com/s/Kotlin_KotlinPublic_Compiler.svg)](https://teamcity.jetbrains.com/buildConfiguration/Kotlin_KotlinPublic_Compiler?branch=%3Cdefault%3E&buildTypeTab=overview&mode=builds)

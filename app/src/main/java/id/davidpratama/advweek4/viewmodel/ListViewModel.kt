@@ -16,7 +16,7 @@ import id.davidpratama.advweek4.model.Student
 class ListViewModel (application: Application) :AndroidViewModel(application) {
 
     fun refresh(){
-       studentLoadError.value = false
+        studentLoadError.value = false
         studentLiveDone.value = true
 
         queue = Volley.newRequestQueue( getApplication() )
@@ -29,16 +29,13 @@ class ListViewModel (application: Application) :AndroidViewModel(application) {
                 val sType = object : TypeToken<List<Student>>() { }.type
                 val result = Gson().fromJson<List<Student>>(response, sType)
                 studentID.value = result
-                studentLiveDone.value = false
+                studentLiveDone.value = true
 
                 Log.d("showvoley", result.toString())
-
-                studentLiveDone.value = false
-                Log.d("showvoley", response.toString())
             },
             {
                 Log.d("showvoley", it.toString())
-                studentLoadError.value = false
+                studentLoadError.value = true
                 studentLiveDone.value = false
             })
 

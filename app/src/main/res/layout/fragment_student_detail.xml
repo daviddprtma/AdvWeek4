@@ -121,5 +121,18 @@
             app:layout_constraintEnd_toEndOf="@+id/photoUser"
             app:layout_constraintStart_toStartOf="@+id/photoUser"
             app:layout_constraintTop_toTopOf="@+id/photoUser" />
+
+        <Button
+            android:id="@+id/btnNotif"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Create Notfication"
+            app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
+            app:layout_constraintHorizontal_bias="0.076"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -7,6 +7,7 @@ import android.os.Build
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.davidpratama.advweek4.R
@@ -40,3 +41,9 @@ fun createNotificationChannel(context: Context, importance: Int, showBadge:	Bool
 
     }
 }
+
+@BindingAdapter("android:imageUrl","android:progressBar")
+fun loadPhotoUrl(view:ImageView, url:String?, pb:ProgressBar){
+    view.loadImage(url,pb)
+}
+

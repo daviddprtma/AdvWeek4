@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import id.davidpratama.advweek4.R
+import id.davidpratama.advweek4.databinding.FragmentStudentDetailBinding
 import id.davidpratama.advweek4.util.loadImage
 import id.davidpratama.advweek4.viewmodel.DetailViewModel
 import id.davidpratama.advweek4.viewmodel.ListViewModel
@@ -18,14 +21,18 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_student_detail.*
 import java.util.concurrent.TimeUnit
 
-class StudentDetailFragment : Fragment() {
+class StudentDetailFragment : Fragment(),ButtonUpdateStudentClickListener,ButtonCreateNotificationClickListener {
     private lateinit var  viewModel: DetailViewModel
+    private lateinit var dataBinding:FragmentStudentDetailBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_detail, container, false)
+        dataBinding = FragmentStudentDetailBinding.inflate(inflater,container,false)
+//        return inflater.inflate(R.layout.fragment_student_detail, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -40,6 +47,9 @@ class StudentDetailFragment : Fragment() {
         viewModel.fetch(id)
 
         observeViewModelDetailStudent()
+
+        dataBinding.listenerupdate = this
+        dataBinding.listenercreatenotification = this
     }
 
     private fun observeViewModelDetailStudent() {
@@ -63,5 +73,20 @@ class StudentDetailFragment : Fragment() {
                     }
             }
         })
+    }
+
+    override fun ButtonUpdateStudentClick(v: View) {
+        Toast.makeText(v.context,"Student update",Toast.LENGTH_SHORT).show()
+        Navigation.findNavController(v).popBackStack()
+    }
+
+    override fun onButtonCreateNotificationClick(v: View) {
+        Observable.timer(5,TimeUnit.SECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{
+                Log.d("hellonotif","Notification delayed in 5 secs")
+                MainActivity.showNotification(v.tag.toString(),"Notifications created :D",R.drawable.ic_baseline_person_24)
+            }
     }
 }
